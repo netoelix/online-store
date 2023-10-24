@@ -1,6 +1,5 @@
-
-import Category from './Category';
 import { useNavigate } from 'react-router-dom';
+import Category from './Category';
 import Cart from '../assets/cartshop.png';
 
 function Home() {
