@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { getCart } from '../services/cartFunctions';
 
 function Cart() {
@@ -23,6 +24,15 @@ function Cart() {
               </p>
             </div>
           ))}
+          <div>
+            <Link
+              to="/cart/purchase"
+              data-testid="checkout-products"
+            >
+              Finalizar Compra
+
+            </Link>
+          </div>
         </div>
       ) : (
         <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
