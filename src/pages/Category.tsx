@@ -6,7 +6,12 @@ type CategoryType = {
   name: string;
 };
 
-function Category() {
+// create the props for the component
+type Props = {
+  handleCategoryChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+function Category({ handleCategoryChange }: Props) {
   const [categories, setCategories] = useState<CategoryType[]>([]);
 
   useEffect(() => {
@@ -26,7 +31,12 @@ function Category() {
     <>
       {categories.map((category) => (
         <div key={ category.id }>
-          <input type="radio" name="category_product" id={ category.id } />
+          <input
+            type="radio"
+            name="category_product"
+            id={ category.id }
+            onChange={ handleCategoryChange }
+          />
           <label htmlFor={ category.id } data-testid="category">{category.name}</label>
         </div>
       ))}
