@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import Cart from '../assets/cartshop.png';
 
+// create a function to add two numbers
+
 function Home() {
   const navigate = useNavigate();
   return (
@@ -9,6 +11,7 @@ function Home() {
         id="search"
         type="text"
         size={ 150 }
+        data-testid="query-input"
       />
       <button
         data-testid="shopping-cart-button"
