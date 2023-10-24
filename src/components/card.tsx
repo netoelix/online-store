@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Cart from '../assets/cartshop.png';
+import { addToCart, getCart, saveCart } from '../services/cartFunctions';
 
 type Props = {
   product: {
@@ -10,6 +12,9 @@ type Props = {
 };
 
 function Card({ product }: Props) {
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
   return (
     <div className="card" data-testid="product">
       <Link to={ `/details/${product.id}` } data-testid="product-detail-link">
@@ -17,6 +22,12 @@ function Card({ product }: Props) {
         <img src={ product.thumbnail } alt={ product.title } />
         <p>{`R$ ${product.price}`}</p>
       </Link>
+      <button data-testid="product-add-to-cart" onClick={ handleAddToCart }>
+        {' '}
+        Adicionar ao Carrinho
+        <img src={ Cart } alt="cartshop" width={ 18 } />
+
+      </button>
     </div>
   );
 }
