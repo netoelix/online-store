@@ -10,6 +10,7 @@ function Home() {
   const navigate = useNavigate();
   const [productList, setProductList] = useState<APISearchResults>();
   const [inputValue, setInputValue] = useState<string>('');
+  const [category, setCategory] = useState<string>('');
   const productsFound = productList ? (productList.results.length > 0) : false;
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -17,9 +18,16 @@ function Home() {
   }
 
   async function handleSearch() {
-    const data = await getProductsFromCategoryAndQuery('', inputValue);
+    const data = await getProductsFromCategoryAndQuery(category, inputValue);
     setProductList(data);
   }
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked) {
+      setCategory(event.target.id);
+      handleSearch();
+    }
+  };
 
   return (
     <div className="home-page">
@@ -44,6 +52,7 @@ function Home() {
       >
         <img src={ Cart } alt="cartshop" width={ 18 } />
       </button>
+      <Category handleCategoryChange={ handleCategoryChange } />
       {productsFound ? (
         <div>
           {productList?.results.map((product) => (
@@ -58,7 +67,7 @@ function Home() {
             Digite algum termo de pesquisa ou escolha uma categoria.
           </p>
         )}
-      <Category />
+
     </div>
   );
 }
