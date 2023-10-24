@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Category from './Category';
 import Cart from '../assets/cartshop.png';
 
 function Home() {
@@ -19,6 +20,7 @@ function Home() {
       <p data-testid="home-initial-message">
         Digite algum termo de pesquisa ou escolha uma categoria.
       </p>
+      <Category />
     </div>
   );
 }
