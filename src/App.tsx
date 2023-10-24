@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/home';
 import Cart from './pages/cart';
 import ProductDetails from './pages/details';
+import Purchase from './pages/Purchase';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Route path="/" element={ <Home /> } />
       <Route path="/cart" element={ <Cart /> } />
       <Route path="/details/:productId" element={ <ProductDetails /> } />
-      {/* <Route path="/coffees/:coffee" element={ <Coffee /> } /> */}
+      <Route path="/cart/purchase" element={ <Purchase /> } />
     </Routes>
   );
 }
