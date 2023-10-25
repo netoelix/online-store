@@ -3,8 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import { APISearchItem } from '../types/apiSearchItem';
 import Cart from '../assets/cartshop.png';
+import { addToCart, getCartSize } from '../services/cartFunctions';
 import Review from '../components/Review';
-import { getCartSize } from '../services/cartFunctions';
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -41,6 +41,13 @@ function ProductDetails() {
           {productDetails?.sold_quantity}
         </li>
       </ul>
+      <button
+        onClick={ () => addToCart(productDetails) }
+        className="cart-btn"
+        data-testid="product-detail-add-to-cart"
+      >
+        Adicionar ao Carrinho
+      </button>
       <button
         data-testid="shopping-cart-button"
         onClick={ () => navigate('/cart') }
