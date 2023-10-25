@@ -7,6 +7,7 @@ type CartProps = {
   quantity: number;
   title: string;
   price: number;
+  available_quantity: number;
 };
 
 function Cart() {
@@ -16,7 +17,7 @@ function Cart() {
 
   const handleIncreaseQtd = (product: CartProps) => {
     const updatedCart = cartQ.map((item) => {
-      if (item.id === product.id) {
+      if (item.id === product.id && item.quantity < item.available_quantity) {
         return {
           ...item,
           quantity: item.quantity + 1,
