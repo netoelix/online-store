@@ -4,6 +4,7 @@ import { getProductById } from '../services/api';
 import { APISearchItem } from '../types/apiSearchItem';
 import Cart from '../assets/cartshop.png';
 import Review from '../components/Review';
+import { getCartSize } from '../services/cartFunctions';
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -45,6 +46,7 @@ function ProductDetails() {
         onClick={ () => navigate('/cart') }
       >
         <img src={ Cart } alt="cartshop" width={ 18 } />
+        <p data-testid="shopping-cart-size">{getCartSize()}</p>
       </button>
       <Review productId={ productId || '' } />
     </div>
