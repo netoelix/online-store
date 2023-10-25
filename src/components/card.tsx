@@ -8,6 +8,9 @@ type Props = {
     title: string;
     thumbnail: string;
     price: number;
+    shipping: {
+      free_shipping: boolean;
+    };
   };
 };
 
@@ -21,6 +24,8 @@ function Card({ product }: Props) {
         <h2>{product.title}</h2>
         <img src={ product.thumbnail } alt={ product.title } />
         <p>{`R$ ${product.price}`}</p>
+        {product.shipping.free_shipping
+      && <p data-testid="free-shipping">Frete Grátis</p>}
       </Link>
       <button data-testid="product-add-to-cart" onClick={ handleAddToCart }>
         {' '}
