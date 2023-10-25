@@ -29,6 +29,8 @@ function ProductDetails() {
         data-testid="product-detail-image"
       />
       <p data-testid="product-detail-price">{`R$ ${productDetails?.price}`}</p>
+      {productDetails?.shipping.free_shipping
+      && <p data-testid="free-shipping">Frete Grátis</p>}
       <ul>
         <li>
           {productDetails?.available_quantity}
