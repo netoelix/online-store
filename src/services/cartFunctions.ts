@@ -13,6 +13,12 @@ export function addToCart(product) {
     const cartProduct = { ...product, quantity: 1 };
     cart.push(cartProduct);
   }
+  // Salve a quantidade de itens do carrinho atualizado no local storage
+  let cartSize = 0;
+  cart.forEach((element) => {
+    cartSize += element.quantity;
+  });
+  saveCartSize(cartSize);
 
   // Salve o carrinho atualizado no local storage
   saveCart(cart);
@@ -24,4 +30,13 @@ export function getCart() {
 
 export function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+export function getCartSize() {
+  const size = (localStorage.getItem('cart-size') || '0');
+  return size;
+}
+
+export function saveCartSize(size: number) {
+  localStorage.setItem('cart-size', (size.toString()));
 }

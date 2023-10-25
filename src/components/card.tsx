@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import Cart from '../assets/cartshop.png';
-import { addToCart, getCart, saveCart } from '../services/cartFunctions';
+import { addToCart, getCart, getCartSize, saveCart } from '../services/cartFunctions';
 
 type Props = {
   product: {
@@ -12,11 +13,14 @@ type Props = {
       free_shipping: boolean;
     };
   };
+  setCartSize: (size: string) => void;
 };
 
-function Card({ product }: Props) {
+function Card({ product, setCartSize }: Props) {
   const handleAddToCart = () => {
     addToCart(product);
+    const size = getCartSize();
+    setCartSize(size);
   };
   return (
     <div className="card" data-testid="product">
