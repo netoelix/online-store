@@ -3,9 +3,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import { APISearchItem } from '../types/apiSearchItem';
 import Cart from '../assets/cartshop.png';
-import { addToCart } from '../services/cartFunctions';
+import { addToCart, getCartSize } from '../services/cartFunctions';
 import Review from '../components/Review';
-import { getCartSize } from '../services/cartFunctions';
 
 function ProductDetails() {
   const { productId } = useParams();
