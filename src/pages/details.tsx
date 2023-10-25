@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import { APISearchItem } from '../types/apiSearchItem';
 import Cart from '../assets/cartshop.png';
+import Review from '../components/Review';
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -45,6 +46,7 @@ function ProductDetails() {
       >
         <img src={ Cart } alt="cartshop" width={ 18 } />
       </button>
+      <Review productId={ productId || '' } />
     </div>
   );
 }
