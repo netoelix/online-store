@@ -4,6 +4,8 @@ import { getProductById } from '../services/api';
 import { APISearchItem } from '../types/apiSearchItem';
 import Cart from '../assets/cartshop.png';
 import { addToCart } from '../services/cartFunctions';
+import Review from '../components/Review';
+import { getCartSize } from '../services/cartFunctions';
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -30,6 +32,8 @@ function ProductDetails() {
         data-testid="product-detail-image"
       />
       <p data-testid="product-detail-price">{`R$ ${productDetails?.price}`}</p>
+      {productDetails?.shipping.free_shipping
+      && <p data-testid="free-shipping">Frete Grátis</p>}
       <ul>
         <li>
           {productDetails?.available_quantity}
@@ -50,7 +54,9 @@ function ProductDetails() {
         onClick={ () => navigate('/cart') }
       >
         <img src={ Cart } alt="cartshop" width={ 18 } />
+        <p data-testid="shopping-cart-size">{getCartSize()}</p>
       </button>
+      <Review productId={ productId || '' } />
     </div>
   );
 }

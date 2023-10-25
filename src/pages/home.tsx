@@ -5,12 +5,14 @@ import Cart from '../assets/cartshop.png';
 import { APISearchResults } from '../types/apiSearch';
 import Card from '../components/card';
 import { getProductsFromCategoryAndQuery } from '../services/api';
+import { getCartSize } from '../services/cartFunctions';
 
 function Home() {
   const navigate = useNavigate();
   const [productList, setProductList] = useState<APISearchResults>();
   const [inputValue, setInputValue] = useState<string>('');
   const [category, setCategory] = useState<string>('');
+  const [cartsize, setCartSize] = useState<string>('');
   const productsFound = productList ? (productList.results.length > 0) : false;
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -51,13 +53,14 @@ function Home() {
         onClick={ () => navigate('/cart') }
       >
         <img src={ Cart } alt="cartshop" width={ 18 } />
+        <p data-testid="shopping-cart-size">{getCartSize()}</p>
       </button>
       <Category handleCategoryChange={ handleCategoryChange } />
       {productsFound ? (
         <div>
           {productList?.results.map((product) => (
             <div key={ product.id }>
-              <Card product={ product } />
+              <Card product={ product } setCartSize={ setCartSize } />
             </div>
           ))}
         </div>
