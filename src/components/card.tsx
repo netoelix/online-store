@@ -24,14 +24,22 @@ function Card({ product, setCartSize }: Props) {
   };
   return (
     <div className="card" data-testid="product">
-      <Link to={ `/details/${product.id}` } data-testid="product-detail-link">
+      <Link
+        to={ `/details/${product.id}` }
+        className="product-home-details"
+        data-testid="product-detail-link"
+      >
         <h2>{product.title}</h2>
         <img src={ product.thumbnail } alt={ product.title } />
         <p>{`R$ ${product.price}`}</p>
         {product.shipping.free_shipping
       && <p data-testid="free-shipping">Frete Grátis</p>}
       </Link>
-      <button data-testid="product-add-to-cart" onClick={ handleAddToCart }>
+      <button
+        className="button-add-to-cart"
+        data-testid="product-add-to-cart"
+        onClick={ handleAddToCart }
+      >
         {' '}
         Adicionar ao Carrinho
         <img src={ Cart } alt="cartshop" width={ 18 } />

@@ -72,7 +72,7 @@ function Review({ productId }: ReviewProps) {
   }
 
   return (
-    <div>
+    <div className="form-avaliation">
       <form onSubmit={ (event) => handleSubmit(event) }>
         <h2>Avaliação</h2>
         <div>
@@ -140,25 +140,19 @@ function Review({ productId }: ReviewProps) {
             onChange={ handleInputChange }
           />
           {fieldsInvalid && <p data-testid="error-msg">Campos inválidos</p>}
-          <button data-testid="submit-review-btn">Enviar</button>
         </div>
+        <button data-testid="submit-review-btn">Enviar</button>
       </form>
       <div>
         {reviews.map((review, index) => (
-          <div key={ index }>
+          <div key={ index } className="reviews">
             <p data-testid="review-card-email">
-              {/* Email:
-              {' '} */}
               {review.email}
             </p>
             <p data-testid="review-card-rating">
-              {/* Rating:
-              {' '} */}
               {review.rating}
             </p>
             <p data-testid="review-card-evaluation">
-              {/* Text:
-              {' '} */}
               {review.message}
             </p>
           </div>

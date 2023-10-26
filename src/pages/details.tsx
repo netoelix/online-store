@@ -22,40 +22,44 @@ function ProductDetails() {
   }, [productId]);
 
   return (
-    <div>
-      <h1>Product Details</h1>
-      <h2 data-testid="product-detail-name">{productDetails?.title}</h2>
-      <img
-        src={ productDetails?.thumbnail }
-        alt={ productDetails?.title }
-        data-testid="product-detail-image"
-      />
-      <p data-testid="product-detail-price">{`R$ ${productDetails?.price}`}</p>
-      {productDetails?.shipping.free_shipping
+    <div className="product-details-center">
+      <div className="product-details-container">
+        <h1>Product Details</h1>
+        <h2 data-testid="product-detail-name">{productDetails?.title}</h2>
+        <img
+          src={ productDetails?.thumbnail }
+          alt={ productDetails?.title }
+          data-testid="product-detail-image"
+          className="img-product"
+        />
+        <p data-testid="product-detail-price">{`R$ ${productDetails?.price}`}</p>
+        {productDetails?.shipping.free_shipping
       && <p data-testid="free-shipping">Frete Grátis</p>}
-      <ul>
-        <li>
-          {productDetails?.available_quantity}
-        </li>
-        <li>
-          {productDetails?.sold_quantity}
-        </li>
-      </ul>
-      <button
-        onClick={ () => addToCart(productDetails) }
-        className="cart-btn"
-        data-testid="product-detail-add-to-cart"
-      >
-        Adicionar ao Carrinho
-      </button>
-      <button
-        data-testid="shopping-cart-button"
-        onClick={ () => navigate('/cart') }
-      >
-        <img src={ Cart } alt="cartshop" width={ 18 } />
-        <p data-testid="shopping-cart-size">{getCartSize()}</p>
-      </button>
-      <Review productId={ productId || '' } />
+        <ul>
+          <li>
+            {productDetails?.available_quantity}
+          </li>
+          <li>
+            {productDetails?.sold_quantity}
+          </li>
+        </ul>
+        <button
+          onClick={ () => addToCart(productDetails) }
+          className="cart-btn"
+          data-testid="product-detail-add-to-cart"
+        >
+          Adicionar ao Carrinho
+        </button>
+        <button
+          className="cart-btn"
+          data-testid="shopping-cart-button"
+          onClick={ () => navigate('/cart') }
+        >
+          <img src={ Cart } alt="cartshop" width={ 18 } />
+          <p data-testid="shopping-cart-size">{getCartSize()}</p>
+        </button>
+        <Review productId={ productId || '' } />
+      </div>
     </div>
   );
 }

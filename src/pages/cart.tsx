@@ -11,7 +11,6 @@ type CartProps = {
 };
 
 function Cart() {
-  // Obtenha o carrinho do local storage
   const cart = getCart();
   const [cartQ, setCartQ] = useState<CartProps[]>(cart);
 

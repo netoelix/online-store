@@ -32,46 +32,58 @@ function Home() {
   };
 
   return (
-    <div className="home-page">
-      <input
-        id="search"
-        type="text"
-        size={ 150 }
-        data-testid="query-input"
-        onChange={ handleInputChange }
-        value={ inputValue }
-      />
-      <button
-        data-testid="query-button"
-        onClick={ handleSearch }
-      >
-        Pesquisar
+    <main>
+      <div className="home-page">
+        <section className="search-bar">
+          <input
+            id="search"
+            type="text"
+            size={ 150 }
+            data-testid="query-input"
+            onChange={ handleInputChange }
+            value={ inputValue }
+            placeholder="Pesquise o nome do produto"
+          />
+          <button
+            id="search-button"
+            data-testid="query-button"
+            onClick={ handleSearch }
+          >
+            Pesquisar
 
-      </button>
-      <button
-        data-testid="shopping-cart-button"
-        onClick={ () => navigate('/cart') }
-      >
-        <img src={ Cart } alt="cartshop" width={ 18 } />
-        <p data-testid="shopping-cart-size">{getCartSize()}</p>
-      </button>
-      <Category handleCategoryChange={ handleCategoryChange } />
-      {productsFound ? (
-        <div>
-          {productList?.results.map((product) => (
-            <div key={ product.id }>
-              <Card product={ product } setCartSize={ setCartSize } />
+          </button>
+          <button
+            id="shopping-button"
+            data-testid="shopping-cart-button"
+            onClick={ () => navigate('/cart') }
+          >
+            <img src={ Cart } alt="cartshop" width={ 18 } />
+            <p data-testid="shopping-cart-size">{getCartSize()}</p>
+          </button>
+        </section>
+        <section className="product-home-page">
+          <nav className="nav-category">
+            <Category handleCategoryChange={ handleCategoryChange } />
+          </nav>
+          {productsFound ? (
+            <div className="product-list">
+              {productList?.results.map((product) => (
+                <div className="produc-item" key={ product.id }>
+                  <Card product={ product } setCartSize={ setCartSize } />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )
-        : (
-          <p data-testid="home-initial-message">
-            Digite algum termo de pesquisa ou escolha uma categoria.
-          </p>
-        )}
-
-    </div>
+          )
+            : (
+              <div className="product-list">
+                <p data-testid="home-initial-message">
+                  Digite algum termo de pesquisa ou escolha uma categoria.
+                </p>
+              </div>
+            )}
+        </section>
+      </div>
+    </main>
   );
 }
 
