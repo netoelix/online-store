@@ -52,7 +52,7 @@ function Cart() {
   };
 
   return (
-    <div>
+    <div className="cartContainer">
       {cart.length > 0 ? (
         <div>
           {cartQ.map((product) => (

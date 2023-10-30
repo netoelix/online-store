@@ -47,7 +47,7 @@ function Purchase() {
   }
 
   return (
-    <form action="" onSubmit={ (event) => handleSubmit(event) }>
+    <form action="" onSubmit={ (event) => handleSubmit(event) } className="formPurchase">
       <div>
         <h2>Revise seus Produtos</h2>
         {cart.map((product) => (
@@ -66,7 +66,7 @@ function Purchase() {
           </div>
         ))}
       </div>
-      <div>
+      <div className="personalContainer">
         <h2>Informações do Comprador</h2>
         <div>
           <label htmlFor="fullName">Nome Completo</label>

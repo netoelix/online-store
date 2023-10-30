@@ -1,14 +1,10 @@
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Category from './Category';
-import Cart from '../assets/cartshop.png';
 import { APISearchResults } from '../types/apiSearch';
 import Card from '../components/card';
 import { getProductsFromCategoryAndQuery } from '../services/api';
-import { getCartSize } from '../services/cartFunctions';
 
 function Home() {
-  const navigate = useNavigate();
   const [productList, setProductList] = useState<APISearchResults>();
   const [inputValue, setInputValue] = useState<string>('');
   const [category, setCategory] = useState<string>('');
@@ -51,14 +47,6 @@ function Home() {
           >
             Pesquisar
 
-          </button>
-          <button
-            id="shopping-button"
-            data-testid="shopping-cart-button"
-            onClick={ () => navigate('/cart') }
-          >
-            <img src={ Cart } alt="cartshop" width={ 18 } />
-            <p data-testid="shopping-cart-size">{getCartSize()}</p>
           </button>
         </section>
         <section className="product-home-page">
